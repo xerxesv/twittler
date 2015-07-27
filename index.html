@@ -11,15 +11,37 @@
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
+		var i = 0;
+		var getTweetDate = function(tweet){
+			var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+			var hours = tweet.created_at.getHours();
+			var ampm = hours >= 12 ? 'pm' : 'am';
+			var hours = hours % 12;
+			hours = hours ? hours : 12;
+			
+			return month[tweet.created_at.getMonth()] + " " + tweet.created_at.getDate() + " " + hours + ":" + tweet.created_at.getMinutes() + " " + ampm; 
+		}
+		var displayTweets = function(){
+			while (streams.home.length > 0){
+			  var tweet = streams.home.shift();
+			  i++;
+			  
+			  var $tweet = $('<div></div>');
+			  $tweet.html(i + '@' + tweet.user + ': ' + tweet.message + ' \&#183\; ' + getTweetDate(tweet));
+			  $tweet.prependTo($body);
+			  
+			  if(i > 20){
+				$body.children().last().remove();
+			  }
+			}
+		}
+		
+		displayTweets();
+		
+		setInterval(displayTweets,1500);
+		
+		
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
 
       });
 
