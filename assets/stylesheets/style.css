@@ -1,0 +1,72 @@
+*,
+*:before,
+*:after {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+body{
+	background:orange;
+}
+/*Sections */
+section {
+	margin: 20px;
+}
+#newtweets {
+	max-width:600px;
+	float:left;
+	
+}
+#users{
+	float:left;
+}
+
+#user-timeline{
+	position:fixed;
+	z-index:10;
+	
+	height:80%;
+	max-width:500px;
+
+	left:0;
+	right:0;
+
+	overflow:auto;
+	margin:auto;
+	
+	
+}
+
+/* Section Formatting*/
+section>div{
+	background:white;
+	padding: 15px;
+	
+	border-style: solid;
+	border-width: 2px;
+	border-color:rgb(48, 102, 133);
+	border-top-width:0px;
+}
+
+section>div:first-child{
+	border-top-width:2px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+section>div:last-child{
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+#user-timeline .content{
+	max-height:80%;
+	overflow:auto;
+	
+}
+/* buttons */
+
+button.close {
+	float:right;
+}
