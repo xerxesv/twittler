@@ -44,8 +44,9 @@
 			var ampm = hours >= 12 ? 'pm' : 'am';
 			var hours = hours % 12;
 			hours = hours ? hours : 12;
+			var minutes = tweet.created_at.getMinutes() < 10 ? String("0" + tweet.created_at.getMinutes()) : tweet.created_at.getMinutes();
 			
-			return month[tweet.created_at.getMonth()] + " " + tweet.created_at.getDate() + " " + hours + ":" + tweet.created_at.getMinutes() + " " + ampm; 
+			return month[tweet.created_at.getMonth()] + " " + tweet.created_at.getDate() + " " + hours + ":" + minutes + " " + ampm; 
 		}
 		
 		var displayTweets = function(){
